@@ -1,6 +1,7 @@
 plugins {
     `java-library`
     checkstyle
+    `maven-publish`
 }
 
 group = "hexlet.code"
@@ -22,6 +23,18 @@ java {
 
 checkstyle {
     toolVersion = "10.21.4"
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            from(components["java"])
+        }
+    }
+}
+
+tasks.register("install") {
+    dependsOn("publishToMavenLocal")
 }
 
 tasks.named<Test>("test") {
