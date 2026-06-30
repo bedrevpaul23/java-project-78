@@ -1,5 +1,6 @@
 plugins {
     `java-library`
+    checkstyle
 }
 
 group = "hexlet.code"
@@ -17,6 +18,10 @@ java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(21)
     }
+}
+
+checkstyle {
+    toolVersion = "10.21.4"
 }
 
 tasks.named<Test>("test") {
